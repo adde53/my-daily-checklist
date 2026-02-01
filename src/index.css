@@ -197,6 +197,11 @@
 
 /* Print styles */
 @media print {
+  @page {
+    margin: 1.5cm 2cm;
+    size: A4;
+  }
+
   .no-print {
     display: none !important;
   }
@@ -206,13 +211,111 @@
   }
 
   body {
-    background: white;
-    color: black;
+    background: white !important;
+    color: #1a1a1a !important;
+    font-size: 11pt !important;
+    line-height: 1.5 !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  header, footer, nav {
+    display: none !important;
+  }
+
+  .container-page {
+    max-width: 100% !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  h1 {
+    font-size: 24pt !important;
+    margin-bottom: 8pt !important;
+    color: #1a1a1a !important;
+    border-bottom: 2px solid #0d9488 !important;
+    padding-bottom: 8pt !important;
+  }
+
+  .checklist-print-header {
+    margin-bottom: 20pt !important;
+  }
+
+  .checklist-print-header p {
+    font-size: 11pt !important;
+    color: #555 !important;
+    margin-top: 6pt !important;
   }
 
   .checklist-item {
-    border-bottom: 1px solid #eee;
-    page-break-inside: avoid;
+    display: flex !important;
+    align-items: flex-start !important;
+    gap: 12pt !important;
+    padding: 10pt 0 !important;
+    border-bottom: 1px solid #e5e5e5 !important;
+    page-break-inside: avoid !important;
+    background: transparent !important;
+  }
+
+  .checklist-item:last-child {
+    border-bottom: none !important;
+  }
+
+  .checkbox-custom {
+    width: 14pt !important;
+    height: 14pt !important;
+    min-width: 14pt !important;
+    border: 1.5pt solid #666 !important;
+    border-radius: 3pt !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    margin-top: 2pt !important;
+    background: white !important;
+  }
+
+  .checkbox-custom-checked {
+    background: #0d9488 !important;
+    border-color: #0d9488 !important;
+  }
+
+  .checkbox-custom-checked svg {
+    color: white !important;
+    width: 10pt !important;
+    height: 10pt !important;
+  }
+
+  .checklist-item span {
+    font-size: 11pt !important;
+    color: #1a1a1a !important;
+  }
+
+  .checklist-item-checked span {
+    text-decoration: line-through !important;
+    color: #888 !important;
+  }
+
+  .text-muted-foreground {
+    color: #666 !important;
+    font-size: 10pt !important;
+  }
+
+  /* Hide progress bar and other UI elements */
+  .bg-card {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+  }
+
+  /* Print footer */
+  .print-footer {
+    display: block !important;
+    margin-top: 30pt !important;
+    padding-top: 15pt !important;
+    border-top: 1px solid #ddd !important;
+    font-size: 9pt !important;
+    color: #888 !important;
+    text-align: center !important;
   }
 }
 

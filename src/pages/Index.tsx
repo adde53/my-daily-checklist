@@ -1,4 +1,4 @@
-import { ArrowRight, CheckCircle2, Sparkles } from 'lucide-react';
+import { ArrowRight, CheckCircle2, ListChecks, Printer, Share2 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
@@ -18,50 +18,105 @@ const Index = () => {
       <Header />
       
       {/* Hero Section */}
-      <section className="relative overflow-hidden">
-        {/* Background decoration */}
-        <div className="absolute inset-0 gradient-hero opacity-5" />
-        <div className="absolute top-20 left-10 w-72 h-72 bg-primary/10 rounded-full blur-3xl" />
-        <div className="absolute bottom-10 right-10 w-96 h-96 bg-accent/10 rounded-full blur-3xl" />
+      <section className="relative overflow-hidden bg-gradient-to-b from-primary/[0.03] to-transparent">
+        {/* Decorative pattern */}
+        <div className="absolute inset-0 opacity-[0.015]" style={{
+          backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23000000' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`
+        }} />
         
-        <div className="container-page relative py-20 md:py-28">
-          <div className="max-w-3xl mx-auto text-center">
-            {/* Badge */}
-            <div className="inline-flex items-center gap-2 bg-primary/10 text-primary px-4 py-2 rounded-full text-sm font-medium mb-6 animate-fade-in">
-              <Sparkles className="w-4 h-4" />
-              Gratis checklistor för alla tillfällen
+        <div className="container-page relative py-16 md:py-24">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            {/* Left: Content */}
+            <div className="text-center lg:text-left">
+              {/* Heading */}
+              <h1 className="text-4xl md:text-5xl lg:text-[3.5rem] font-bold text-foreground mb-6 leading-[1.1] animate-fade-in">
+                Få ordning på{' '}
+                <span className="relative">
+                  <span className="relative z-10 text-primary">tillvaron</span>
+                  <span className="absolute bottom-2 left-0 w-full h-3 bg-accent/30 -z-0 rounded-sm" />
+                </span>
+              </h1>
+              
+              {/* Subheading */}
+              <p className="text-lg text-muted-foreground mb-8 max-w-lg mx-auto lg:mx-0 animate-fade-in" style={{ animationDelay: '100ms' }}>
+                Färdiga checklistor för flytt, ekonomi, resor och allt däremellan. 
+                Bocka av på sajten, skriv ut eller kopiera – helt gratis.
+              </p>
+              
+              {/* Search */}
+              <div className="max-w-md mx-auto lg:mx-0 animate-fade-in" style={{ animationDelay: '200ms' }}>
+                <SearchBar size="large" placeholder="Vad behöver du hjälp med?" />
+              </div>
+              
+              {/* Features */}
+              <div className="flex flex-wrap justify-center lg:justify-start gap-6 mt-8 animate-fade-in" style={{ animationDelay: '300ms' }}>
+                <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                  <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center">
+                    <ListChecks className="w-4 h-4 text-primary" />
+                  </div>
+                  <span>Bocka av online</span>
+                </div>
+                <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                  <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center">
+                    <Printer className="w-4 h-4 text-primary" />
+                  </div>
+                  <span>Skriv ut</span>
+                </div>
+                <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                  <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center">
+                    <Share2 className="w-4 h-4 text-primary" />
+                  </div>
+                  <span>Dela enkelt</span>
+                </div>
+              </div>
             </div>
             
-            {/* Heading */}
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6 animate-fade-in" style={{ animationDelay: '100ms' }}>
-              Checklistor som gör{' '}
-              <span className="text-primary">vardagen enklare</span>
-            </h1>
-            
-            {/* Subheading */}
-            <p className="text-lg md:text-xl text-muted-foreground mb-10 animate-fade-in" style={{ animationDelay: '200ms' }}>
-              Hitta färdiga checklistor för flytt, ekonomi, resor och mer. 
-              Bocka av direkt, skriv ut eller kopiera – helt gratis.
-            </p>
-            
-            {/* Search */}
-            <div className="max-w-xl mx-auto animate-fade-in" style={{ animationDelay: '300ms' }}>
-              <SearchBar size="large" placeholder="Sök bland alla checklistor..." />
-            </div>
-            
-            {/* Quick stats */}
-            <div className="flex flex-wrap justify-center gap-8 mt-12 animate-fade-in" style={{ animationDelay: '400ms' }}>
-              <div className="flex items-center gap-2 text-muted-foreground">
-                <CheckCircle2 className="w-5 h-5 text-success" />
-                <span>{checklists.length}+ checklistor</span>
-              </div>
-              <div className="flex items-center gap-2 text-muted-foreground">
-                <CheckCircle2 className="w-5 h-5 text-success" />
-                <span>{categories.length} kategorier</span>
-              </div>
-              <div className="flex items-center gap-2 text-muted-foreground">
-                <CheckCircle2 className="w-5 h-5 text-success" />
-                <span>100% gratis</span>
+            {/* Right: Visual */}
+            <div className="hidden lg:block relative animate-fade-in" style={{ animationDelay: '200ms' }}>
+              <div className="relative">
+                {/* Main card */}
+                <div className="bg-card rounded-2xl border border-border shadow-lg p-6 transform rotate-1">
+                  <div className="flex items-center gap-3 mb-4">
+                    <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center">
+                      <CheckCircle2 className="w-5 h-5 text-primary" />
+                    </div>
+                    <div>
+                      <h3 className="font-semibold text-foreground">Flytt – Checklista</h3>
+                      <p className="text-xs text-muted-foreground">12 punkter · 2-3 veckor</p>
+                    </div>
+                  </div>
+                  <div className="space-y-3">
+                    {['Säg upp hyreskontrakt', 'Adressändring hos Skatteverket', 'Flytta försäkringar'].map((item, i) => (
+                      <div key={i} className="flex items-center gap-3 text-sm">
+                        <div className={`w-5 h-5 rounded-md border-2 flex items-center justify-center ${i < 2 ? 'bg-success border-success' : 'border-border'}`}>
+                          {i < 2 && <CheckCircle2 className="w-3 h-3 text-success-foreground" />}
+                        </div>
+                        <span className={i < 2 ? 'line-through text-muted-foreground' : 'text-foreground'}>{item}</span>
+                      </div>
+                    ))}
+                    <div className="text-xs text-muted-foreground pt-2">+ 9 fler punkter...</div>
+                  </div>
+                </div>
+                
+                {/* Floating card 1 */}
+                <div className="absolute -top-4 -right-4 bg-card rounded-xl border border-border shadow-md p-3 transform -rotate-3">
+                  <div className="flex items-center gap-2 text-sm">
+                    <div className="w-6 h-6 rounded-lg bg-accent/20 flex items-center justify-center">
+                      <span className="text-xs">✈️</span>
+                    </div>
+                    <span className="font-medium text-foreground">Packlista semester</span>
+                  </div>
+                </div>
+                
+                {/* Floating card 2 */}
+                <div className="absolute -bottom-6 -left-6 bg-card rounded-xl border border-border shadow-md p-3 transform rotate-2">
+                  <div className="flex items-center gap-2 text-sm">
+                    <div className="w-6 h-6 rounded-lg bg-success/20 flex items-center justify-center">
+                      <span className="text-xs">💰</span>
+                    </div>
+                    <span className="font-medium text-foreground">Budget – Månad</span>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
