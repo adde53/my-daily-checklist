@@ -56,7 +56,14 @@ const ChecklistPage = () => {
           Tillbaka till {categoryNames[checklist.category]}
         </Link>
         
-        <div className="max-w-2xl">
+        {/* Print header - only visible when printing */}
+        <div className="hidden print:block checklist-print-header">
+          <h1>{checklist.title}</h1>
+          <p>{checklist.description}</p>
+        </div>
+        
+        {/* Screen header */}
+        <div className="max-w-2xl print:hidden">
           <div className="flex flex-wrap items-center gap-3 mb-4">
             <Link 
               to={`/kategori/${checklist.category}`}
@@ -86,6 +93,11 @@ const ChecklistPage = () => {
       <section className="container-page pb-16">
         <div className="max-w-2xl">
           <ChecklistInteractive checklist={checklist} />
+          
+          {/* Print footer */}
+          <div className="hidden print:block print-footer">
+            Checklista från Checklistor.se · {new Date().toLocaleDateString('sv-SE')}
+          </div>
         </div>
       </section>
 
